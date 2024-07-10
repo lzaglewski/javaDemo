@@ -16,12 +16,9 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class LoginAction {
-
-
     private final AuthenticationManager authenticationManager;
     private final SecurityContextRepository securityContextRepository = new HttpSessionSecurityContextRepository();
     private final SecurityContextHolderStrategy securityContextHolderStrategy = SecurityContextHolder.getContextHolderStrategy();
-
 
     @Autowired
     public LoginAction(AuthenticationManager authenticationManager) {

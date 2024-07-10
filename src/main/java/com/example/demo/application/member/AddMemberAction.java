@@ -1,13 +1,11 @@
 package com.example.demo.application.member;
 
-import com.example.demo.domain.member.Member;
 import com.example.demo.domain.member.MemberService;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
-@RestController
+@Controller
 public class AddMemberAction {
 
     private final MemberService memberService;
@@ -16,8 +14,9 @@ public class AddMemberAction {
         this.memberService = memberService;
     }
 
-    @PostMapping("/members/list")
-    public List<Member> getMembersByEmail() {
-        return this.memberService.getMembersByEmail("john@example.com");
+    @GetMapping("/members/add")
+    public String addMember() {
+        this.memberService.createMember("John", "john@example.com");
+        return "redirect:/members/list";
     }
 }
