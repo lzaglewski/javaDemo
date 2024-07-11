@@ -1,0 +1,31 @@
+{% extends "base" %}
+
+    {% block title %}
+    Please Log In
+    {% endblock %}
+
+{% block header %}
+    Please Log In
+{% endblock %}
+
+{% block body %}
+    {% if param.error %}
+        <div>
+            Invalid username and password.
+        </div>
+    {% endif %}
+    {% if param.logout %}
+        <div>
+            You have been logged out.
+        </div>
+    {% endif %}
+    <form action="{{ href('/login') }}" method="post">
+        <div>
+            <input type="text" name="username" placeholder="Username"/>
+        </div>
+        <div>
+            <input type="password" name="password" placeholder="Password"/>
+        </div>
+        <input type="submit" value="Log in" />
+    </form>
+{% endblock %}

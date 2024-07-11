@@ -1,0 +1,59 @@
+{% extends "base" %}
+
+    {% block title %}
+    Members List
+    {% endblock %}
+
+    {% block header %}
+    Members List
+    {% endblock %}
+
+    {% block body %}
+    <a href="{{ href('/') }}">HOME</a>
+    <a href="{{ href('/members/add') }}">Add member</a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tbody>
+                {% for member in members %}
+            <tr>
+                <td>{{ member.name }}</td>
+                <td>{{ member.email }}</td>
+            </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Members List</title>
+</head>
+<body>
+<a href="{{ href('/') }}">HOME</a>
+<a href="{{ href('/members/add') }}">Add member</a>
+<h1>Members List</h1>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+            {% for member in members %}
+        <tr>
+            <td>{{ member.name }}</td>
+            <td>{{ member.email }}</td>
+        </tr>
+            {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

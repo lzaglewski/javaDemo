@@ -1,0 +1,15 @@
+{% extends "base" %}
+
+    {% block title %}
+    Please Log In
+    {% endblock %}
+
+    {% block header %}
+    Please Log In
+    {% endblock %}
+
+{% block body %}
+<form action="{{ href('/login') }}" method="get">
+    <input type="submit" value="Log in as user"/>
+</form>
+{% endblock %}
