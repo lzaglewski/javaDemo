@@ -33,15 +33,25 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
 	implementation 'io.jsonwebtoken:jjwt-impl:0.12.6'
+//	implementation 'org.flywaydb:flyway-core'
+//	implementation 'org.flywaydb:flyway-database-oracle'
+	implementation 'org.liquibase:liquibase-core'
+	implementation 'org.springframework.shell:spring-shell-starter:3.3.1'
 	implementation 'io.pebbletemplates:pebble-spring-boot-starter:3.2.2'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
-	runtimeOnly 'com.oracle.database.jdbc:ojdbc11'
+	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
 	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.integration:spring-integration-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.shell:spring-shell-dependencies:3.1.5"
+	}
 }
 
 tasks.named('test') {
