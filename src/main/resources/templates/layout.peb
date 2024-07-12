@@ -1,0 +1,26 @@
+{% extends 'base' %}
+
+{% block main %}
+    <div class="main-header d-lg-none">
+        <div class="main-header-logo">
+            <div class="logo-header" data-background-color="dark"></div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="page-inner">
+            <div class="page-header">
+                <h1>{% block header %}{% endblock %}</h1>
+                {% block breadcrumb %}{% endblock %}
+            </div>
+
+{#            {% include 'admin/_component/flashes.html.twig' %}#}
+
+            {% block body %}{% endblock %}
+        </div>
+
+        {% block footer %}
+            {% include '_component/footer' %}
+        {% endblock %}
+    </div>
+{% endblock %}

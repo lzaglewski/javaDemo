@@ -1,0 +1,20 @@
+#dynamic-knp-table {
+    position: relative;
+}
+
+#dynamic-knp-table .tear {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 2;
+    background-color: rgba(255,255,255,0.8);
+}
+
+th a.sortable, th.sorted a {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+}

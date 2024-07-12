@@ -1,0 +1,8 @@
+.auto-complete-result:hover, .auto-complete-result:focus {
+    background-color: #ebedf2 !important;
+}
+
+#data-table-search-results {
+    height: fit-content;
+    max-height: 250px;
+}

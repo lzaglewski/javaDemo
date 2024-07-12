@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Title{% endblock %}</title>
+
+    <link rel="stylesheet" href="/dist/assets/admin/js/admin.vendor.css"/>
+    <link rel="stylesheet" href="/dist/assets/admin/js/admin.css"/>
+
+    <script src="/dist/script.js"></script>
 </head>
 <body>
+<div class="wrapper">
+    {% block wrapper %}
+        {% block aside %}
+            {% include '_component/aside' %}
+        {% endblock %}
+
+        <main class="main-panel">
+            {% block main %}{% endblock %}
+        </main>
+    {% endblock %}
+</div>
 <h1>
     {% block header %}
         Welcome
@@ -13,7 +29,13 @@
 <div>
     {% block body %}
         Hello my friend
+        <img src="/images/teddy_bear.jpg" alt="teddy bear">
     {% endblock %}
 </div>
+
+    {% block javascripts %}
+    <script src="/dist/assets/admin/js/admin.vendor.js"></script>
+    <script src="/dist/assets/admin/js/admin.js"></script>
+    {% endblock %}
 </body>
 </html>

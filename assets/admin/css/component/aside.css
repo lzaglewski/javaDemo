@@ -1,0 +1,11 @@
+.sidebar .logo {
+    color: #fff !important;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.logo-header[data-background-color="dark"] .logo {
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+}

@@ -1,0 +1,32 @@
+<footer class="footer">
+    <div class="container-fluid d-flex justify-content-between">
+        <nav class="pull-left">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" title="Contact">
+                        Contact
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" title="Help">
+                        Help
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" title="Licences">
+                        Licences
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="copyright">
+            2024,
+            Made with
+            <i class="fa-solid fa-heart text-danger"></i>
+        </div>
+        <div>
+            Distributed by
+            <a target="_blank" href="https://oskarwegner.pl/" title="Oskar Wegner">Oskar Wegner</a>.
+        </div>
+    </div>
+</footer>

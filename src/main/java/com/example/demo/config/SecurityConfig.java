@@ -28,6 +28,8 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/images/**").permitAll()
+                        .requestMatchers("/dist/**").permitAll()
                         .requestMatchers("/login").permitAll()
                         .anyRequest().authenticated())
                 .logout(logout -> logout

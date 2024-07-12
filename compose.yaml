@@ -15,3 +15,9 @@ services:
       - '1521:1521'
     environment:
       ORACLE_PWD: mypassword1
+  node:
+    image: node:20
+    container_name: java_node
+    build: docker/node
+    volumes:
+      - './:/var/app'
