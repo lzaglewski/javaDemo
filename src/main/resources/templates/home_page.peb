@@ -17,4 +17,5 @@
         <a href="{{ href('/members/list') }}">Members</a>
     </div>
     <p>Hello, {{ name }} my friend</p>
+    <p>{{ currentUrlPath }}</p>
 {% endblock %}
