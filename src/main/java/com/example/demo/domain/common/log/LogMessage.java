@@ -17,4 +17,11 @@ public class LogMessage {
     public long getTimestamp() {
         return timestamp;
     }
+
+    public String toString() {
+        return "LogMessage{" +
+                "content='" + content + '\'' +
+                ", timestamp=" + timestamp +
+                '}';
+    }
 }
