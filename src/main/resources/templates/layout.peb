@@ -14,7 +14,7 @@
                 {% block breadcrumb %}{% endblock %}
             </div>
 
-{#            {% include 'admin/_component/flashes.html.twig' %}#}
+            {% include '_component/flashes' %}
 
             {% block body %}{% endblock %}
         </div>

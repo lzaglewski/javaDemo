@@ -15,4 +15,6 @@
         <a href="{{ href('/login-choice') }}">Login</a>
     </div>
 
+    <p>Hello, {{ name }} my friend</p>
+    <p>{{ currentUrlPath }}</p>
 {% endblock %}

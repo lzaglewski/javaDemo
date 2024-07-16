@@ -13,23 +13,12 @@
 <div class="wrapper">
     {% block wrapper %}
         {% block aside %}
-            {% include '_component/aside' %}
+            {% include '_component/aside/aside' %}
         {% endblock %}
 
         <main class="main-panel">
             {% block main %}{% endblock %}
         </main>
-    {% endblock %}
-</div>
-<h1>
-    {% block header %}
-        Welcome
-    {% endblock %}
-</h1>
-<div>
-    {% block body %}
-        Hello my friend
-        <img src="/images/teddy_bear.jpg" alt="teddy bear">
     {% endblock %}
 </div>
 
