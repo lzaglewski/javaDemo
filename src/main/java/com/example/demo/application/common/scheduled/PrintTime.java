@@ -5,8 +5,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PrintTime {
+    int counter = 0;
+
     @Scheduled(cron = "0 * * * * ?")
     public void printTime() {
-        System.out.println("Scheduled test: Current time: " + System.currentTimeMillis());
+        //this method will print couter every minute
+
+        System.out.println("Scheduled test: Counter:" + counter++);
     }
 }

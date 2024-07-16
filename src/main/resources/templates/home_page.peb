@@ -6,15 +6,13 @@
 
 
     {% block header %}
-        Homepage
+    {{ message('home_page.h1') }}
     {% endblock %}
 
 
 {% block body %}
     <div>
-        <a href="{{ href('/logout') }}">Logouto</a>
-        <a href="{{ href('/login') }}">Login</a>
-        <a href="{{ href('/members/list') }}">Members</a>
+        <a href="{{ href('/login-choice') }}">Login</a>
     </div>
-    <p>Hello, {{ name }} my friend</p>
+
 {% endblock %}

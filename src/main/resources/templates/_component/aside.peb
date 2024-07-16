@@ -29,7 +29,7 @@
                 <ul class="nav nav-secondary">
 {#                    <li class="nav-item {% if app.request.get('_route') == 'admin_example_home' %}active{% endif %}">#}
                     <li class="nav-item">
-                        <a href="{{ href('/') }}" class="collapsed" aria-expanded="false">
+                        <a href="{{ href('/admin/') }}" class="collapsed" aria-expanded="false">
                             <i class="fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>

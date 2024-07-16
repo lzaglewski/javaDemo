@@ -11,8 +11,6 @@ public class HomeAction {
 
     @GetMapping()
     public String home(Model model) {
-
-        model.addAttribute("name", "Spring demo app");
         return "home_page";
     }
 }

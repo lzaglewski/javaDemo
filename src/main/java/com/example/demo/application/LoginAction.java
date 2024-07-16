@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolderStrategy;
 import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.security.web.context.SecurityContextRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -26,15 +27,13 @@ public class LoginAction {
     }
 
     @GetMapping("/login-choice")
-    public String loginChoice() {
+    public String loginChoice(Model model) {
+        model.addAttribute("username", "Administrator");
         return "login_choice";
     }
 
-    @GetMapping("/login")
-    public String autoLogin(HttpServletRequest request, HttpServletResponse response) {
-        String username = "user";
-        String password = "password";
-
+    @PostMapping("/login")
+    public String autoLogin(@RequestParam String username, @RequestParam String password,HttpServletRequest request, HttpServletResponse response) {
         UsernamePasswordAuthenticationToken token = UsernamePasswordAuthenticationToken.unauthenticated(
                 username, password);
         Authentication authentication = authenticationManager.authenticate(token);
@@ -44,7 +43,7 @@ public class LoginAction {
         securityContextRepository.saveContext(context, request, response);
 
         // Redirect to home page
-        return "redirect:/members/whoami";
+        return "redirect:/admin/";
     }
 
     @GetMapping("/logout")
