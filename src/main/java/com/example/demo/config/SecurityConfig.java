@@ -34,7 +34,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/images/**").permitAll()
                         .requestMatchers("/dist/**").permitAll()
-                        .requestMatchers("/members/whoami").permitAll()
+                        .requestMatchers("/whoami").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/members/**").access(this.listMemberActionVoter)
                         .anyRequest().authenticated())

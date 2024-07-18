@@ -4,6 +4,8 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
 
+import io.micrometer.common.lang.NonNull;
+
 public class LogMessageHandler implements MessageHandler {
 
     private final LogEntryRepository logEntryRepository;
@@ -15,7 +17,7 @@ public class LogMessageHandler implements MessageHandler {
 
 
     @Override
-    public void handleMessage(Message<?> message) throws MessagingException {
+    public void handleMessage(@SuppressWarnings("null") @NonNull Message<?> message) throws MessagingException {
         LogMessage logMessage = (LogMessage) message.getPayload();
         LogEntry logEntry = new LogEntry(logMessage.getContent(), logMessage.getTimestamp());
         logEntryRepository.save(logEntry);

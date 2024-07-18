@@ -9,8 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.List;
-
 @Controller
 final public class ListMemberAction {
 
@@ -26,7 +24,7 @@ final public class ListMemberAction {
     }
 
     @GetMapping("/members/list")
-    public String getMembersByEmail(Model model, @RequestParam(defaultValue = "1") Integer page, @RequestParam(defaultValue = "3") Integer size) {
+    public String getMembersByEmail(Model model, @RequestParam(name = "page", defaultValue = "1") Integer page, @RequestParam(name = "size", defaultValue = "3") Integer size) {
         var pageable = PageRequest.of(page, size);
         var members = this.memberService.list(pageable);
         model.addAttribute("members", members);

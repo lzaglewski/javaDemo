@@ -1,0 +1,62 @@
+<!doctype html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{_component/header :: header(~{::title})}">
+    <title>Who am I</title>
+</head>
+<body th:replace="~{layout :: wrapper(~{::bodyContent}, ~{::breadcrumbs}, ~{::header})}">
+    <h1 th:fragment="header">Who am I</h1>
+
+    <nav aria-label="{{ 'component.breadcrumbs.label'|trans }}" th:fragment="breadcrumbs">
+        <ol class="breadcrumbs">
+            <li class="nav-item">
+                <a th:href="@{/}" title="Home">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{//whoami}" title="Who am I">
+                    <span>Who am I</span>
+                </a>
+            </li>
+        </ol>
+    </nav>
+
+    <div th:fragment="bodyContent" class="body">
+        <div>
+            <a th:href="@{/logout}">Logouto</a>    
+        </div>
+        <p>Hello, <span th:text="${name}"></span> my friend</p>
+        <p>You are logged as <span th:text="${username}"></span></p>
+        <p>principal: <span th:text="${principal}"></span></p>
+        <p>authorities: <span th:text="${authorities}"></span></p>
+    </div>
+</body>
+</html>
+
+{% extends "layout" %}
+
+    {% block title %}
+        Homepage
+    {% endblock %}
+
+
+    {% block header %}
+        Homepage
+    {% endblock %}
+
+
+{% block body %}
+    <div>
+        <a href="{{ href('/logout') }}">Logouto</a>
+
+
+    </div>
+    <p>Hello, {{ name }} my friend</p>
+    <p>You are logged as {{ username }}</p>
+    <p>principal: {{ principal }}</p>
+    <p>authorities: {{ authorities }}</p>
+
+{% endblock %}

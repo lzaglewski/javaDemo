@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.Collection;
 
 @Controller
-@RequestMapping("/admin/")
+@RequestMapping("/admin")
 public class DashboardAction {
 
     @GetMapping()

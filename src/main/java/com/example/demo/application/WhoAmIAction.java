@@ -1,4 +1,4 @@
-package com.example.demo.application.member;
+package com.example.demo.application;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,7 +13,7 @@ import java.util.Collection;
 @Controller
 public class WhoAmIAction {
 
-    @GetMapping("/members/whoami")
+    @GetMapping("/whoami")
     public String whoAmI(Model model) {
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
@@ -24,6 +24,6 @@ public class WhoAmIAction {
         model.addAttribute("username", username);
         model.addAttribute("principal", principal);
         model.addAttribute("authorities", authorities);
-        return "whoami";
+        return "Security/whoami";
     }
 }

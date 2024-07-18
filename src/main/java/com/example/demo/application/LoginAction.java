@@ -33,7 +33,7 @@ public class LoginAction {
     }
 
     @PostMapping("/login")
-    public String autoLogin(@RequestParam String username, @RequestParam String password,HttpServletRequest request, HttpServletResponse response) {
+    public String autoLogin(@RequestParam(name = "username", defaultValue = "Administrator") String username, @RequestParam(name = "password", defaultValue = "password") String password, HttpServletRequest request, HttpServletResponse response) {
         UsernamePasswordAuthenticationToken token = UsernamePasswordAuthenticationToken.unauthenticated(
                 username, password);
         Authentication authentication = authenticationManager.authenticate(token);

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{_component/header :: header(~{::title})}">
+    <title>Dashboard</title>
+</head>
+<body th:replace="~{layout :: wrapper(~{::bodyContent}, ~{::breadcrumbs}, ~{::header})}">
+    <h1 th:fragment="header">Dashboard</h1>
+
+    <nav aria-label="{{ 'component.breadcrumbs.label'|trans }}" th:fragment="breadcrumbs">
+        <ol class="breadcrumbs">
+            <li class="nav-item">
+                <a th:href="@{/}" title="Home">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/admin}" title="Dashboard">
+                    <span>Dashboard</span>
+                </a>
+            </li>
+        </ol>
+    </nav>
+
+    <div th:fragment="bodyContent" class="body">
+        <div>
+            <ul>
+                <li><a th:href="@{/logout}">Logouto</a></li>
+                <li><a th:href="@{/members/list}">Members</a></li>
+                <li><a th:href="@{/login-choice}">Login - choice</a></li>
+                <li><a th:href="@{//whoami}">Who am I</a></li>
+            </ul>
+        </div>
+        <p>Hello, <span th:text="${name}">text</span> my friend</p>
+        <p>You are logged as <span th:text="${username}">text</span></p>
+    </div>
+</body>
+</html>

@@ -4,7 +4,6 @@ import com.example.demo.domain.member.Member;
 import com.example.demo.domain.member.MemberRepositoryInterface;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
@@ -20,7 +19,6 @@ public class JpaMemberRepositoryImpl implements MemberRepositoryInterface {
 
     private final JpaMemberRepositoryInterface jpaMemberRepository;
 
-    @Autowired
     JpaMemberRepositoryImpl(JpaMemberRepositoryInterface jpaMemberRepository) {
         this.jpaMemberRepository = jpaMemberRepository;
     }
