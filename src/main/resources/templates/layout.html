@@ -18,6 +18,8 @@
                     <th:block th:replace="${breadcrumbs}"></th:block>
                 </div>
 
+                <th:block th:insert="~{_component/flashes}"></th:block>
+
                 <th:block th:replace="${bodyContent}"></th:block>
 
             </div>
