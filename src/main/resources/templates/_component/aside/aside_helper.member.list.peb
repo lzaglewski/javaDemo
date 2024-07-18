@@ -1,1 +1,0 @@
-{% if currentUrlPath == '/members/list' %}show active{% endif %}

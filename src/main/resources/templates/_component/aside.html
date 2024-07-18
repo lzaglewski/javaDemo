@@ -2,7 +2,7 @@
     <div class="sidebar-logo">
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
-            <a href="{{ href('/') }}" class="logo">
+            <a th:href="@{'/'}" class="logo">
                 More <i class="fa-solid fa-heart text-danger ms-2"></i>
             </a>
             <button class="navbar-toggler sidenav-toggler ms-auto" type="button" data-bs-toggle="collapse"
@@ -26,9 +26,8 @@
              style="height: 807px; margin-bottom: 0px; margin-right: 0px; max-height: none;">
             <div class="sidebar-content">
                 <ul class="nav nav-secondary">
-{#                    <li class="nav-item {% if app.request.get('_route') == 'admin_example_home' %}active{% endif %}">#}
                     <li class="nav-item">
-                        <a href="{{ href('/') }}" class="collapsed" aria-expanded="false">
+                        <a th:href="@{'/'}" class="collapsed" aria-expanded="false">
                             <i class="fas fa-home"></i>
                             <p>Dashboard</p>
                         </a>
@@ -41,40 +40,40 @@
                         <h4 class="text-section">Section</h4>
                     </li>
 
-                    <li class="nav-item submenu {% include "_component/aside/aside_helper.member" %}">
+                    <li class="nav-item submenu">
                         <a data-bs-toggle="collapse" href="#aside-member">
                             <i class="fas fa-pen-square"></i>
                             <p>Members</p>
                             <span class="caret"></span>
                         </a>
-                        <div class="collapse {% include "_component/aside/aside_helper.member" %}" id="aside-member">
+                        <div class="collapse" id="aside-member">
                             <ul class="nav nav-collapse">
-                                <li class="{% include "_component/aside/aside_helper.member.list" %}">
-                                    <a href="{{ href('/members/list') }}">
-                                        <span class="sub-item">List</span>
-                                    </a>
+                                <li class="">
+                                <a th:href="@{/members/list}">
+                                    <span class="sub-item">List</span>
+                                </a>
                                 </li>
                             </ul>
                         </div>
                     </li>
                 </ul>
-            </div>
-        </div>
-
-        <div class="scroll-element scroll-x">
-            <div class="scroll-element_outer">
-                <div class="scroll-element_size"></div>
-                <div class="scroll-element_track"></div>
-                <div class="scroll-bar" style="width: 0px; left: 0px;"></div>
-            </div>
-        </div>
-
-        <div class="scroll-element scroll-y">
-            <div class="scroll-element_outer">
-                <div class="scroll-element_size"></div>
-                <div class="scroll-element_track"></div>
-                <div class="scroll-bar" style="height: 0px;"></div>
-            </div>
         </div>
     </div>
+
+    <div class="scroll-element scroll-x">
+        <div class="scroll-element_outer">
+            <div class="scroll-element_size"></div>
+            <div class="scroll-element_track"></div>
+            <div class="scroll-bar" style="width: 0px; left: 0px;"></div>
+        </div>
+    </div>
+
+    <div class="scroll-element scroll-y">
+        <div class="scroll-element_outer">
+            <div class="scroll-element_size"></div>
+            <div class="scroll-element_track"></div>
+            <div class="scroll-bar" style="height: 0px;"></div>
+        </div>
+    </div>
+</div>
 </div>

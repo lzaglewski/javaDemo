@@ -27,7 +27,7 @@ public class LoginAction {
 
     @GetMapping("/login-choice")
     public String loginChoice() {
-        return "login_choice";
+        return "Security/login_choice";
     }
 
     @GetMapping("/login")

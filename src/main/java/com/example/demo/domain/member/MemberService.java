@@ -3,6 +3,8 @@ package com.example.demo.domain.member;
 import com.example.demo.domain.common.log.LogMessage;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
@@ -23,7 +25,7 @@ public class MemberService {
 
     public void createMember(String name, String email) {
         Member member = new Member(name, email);
-        memberRepositoryInterface.save(member);
+        memberRepositoryInterface.add(member);
 
         LogMessage logMessage = new LogMessage("Member created", System.currentTimeMillis());
         logChannel.send(MessageBuilder.withPayload(logMessage).build());
@@ -32,8 +34,8 @@ public class MemberService {
         eventPublisher.publishEvent(event);
     }
 
-    public List<Member> getMembersByEmail(String email) {
-        return memberRepositoryInterface.findByEmail(email);
+    public Page<Member> list(Pageable pageable) {
+        return memberRepositoryInterface.findAll(pageable);
     }
 
     public Member getMember(Long id) {

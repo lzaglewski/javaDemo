@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{_component/header :: header(~{::title})}">
+    <title>Homepage</title>
+</head>
+<body th:replace="~{layout :: wrapper(~{::bodyContent}, ~{::breadcrumbs}, ~{::header})}">
+    <h1 th:fragment="header">Homepage</h1>
+
+    <nav aria-label="{{ 'component.breadcrumbs.label'|trans }}" th:fragment="breadcrumbs">
+        <ol class="breadcrumbs">
+            <li class="nav-item">
+                <a th:href="@{/}" title="Home">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+            </li>
+        </ol>
+    </nav>
+
+    <div th:fragment="bodyContent" class="body">
+        <div>
+            <a th:href="@{/logout}">Logout</a>
+            <a th:href="@{/login}">Login</a>
+            <a th:href="@{/members/list}">Members</a>
+        </div>
+
+        <p th:text="'Hello, ' + ${name} + ' my friend'">Hello, friend</p>
+        <p th:text="${currentUrlPath}">Current URL Path</p>
+        <div th:text="${pathname}">text</div>
+    </div>
+</body>
+</html>
