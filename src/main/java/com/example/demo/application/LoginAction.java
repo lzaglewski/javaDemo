@@ -43,7 +43,7 @@ public class LoginAction {
         securityContextRepository.saveContext(context, request, response);
 
         // Redirect to home page
-        return "redirect:/admin/";
+        return "redirect:/admin";
     }
 
     @GetMapping("/logout")
