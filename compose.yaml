@@ -8,6 +8,15 @@ services:
 #      - 'MARIADB_USER=myuser'
 #    ports:
 #      - '3306:3306'
+  app:
+    build:
+      context: .
+      dockerfile: docker/java/Dockerfile
+    volumes:
+      - .:/app
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "8080:8080"
   oracle:
     image: oracle/database:19.3.0-ee
     container_name: oracle19-java

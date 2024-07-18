@@ -1,0 +1,24 @@
+{% extends "layout" %}
+
+    {% block title %}
+        Homepage
+    {% endblock %}
+
+
+    {% block header %}
+        Homepage
+    {% endblock %}
+
+
+{% block body %}
+    <div>
+        <a href="{{ href('/logout') }}">Logouto</a>
+
+
+    </div>
+    <p>Hello, {{ name }} my friend</p>
+    <p>You are logged as {{ username }}</p>
+    <p>principal: {{ principal }}</p>
+    <p>authorities: {{ authorities }}</p>
+
+{% endblock %}
