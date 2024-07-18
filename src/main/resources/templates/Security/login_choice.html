@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{_component/header :: header(~{::title})}">
+    <title>Please Log In</title>
+</head>
+<body th:replace="~{layout :: wrapper(~{::bodyContent}, ~{::breadcrumbs}, ~{::header})}">
+<h1 th:fragment="header">Please Log In</h1>
+
+<nav th:fragment="breadcrumbs">
+</nav>
+
+<div th:fragment="bodyContent" class="body">
+    <form th:action="@{/login}" method="GET">
+        <input type="submit" value="Log in as user"/>
+    </form>
+</div>
+</body>
+</html>

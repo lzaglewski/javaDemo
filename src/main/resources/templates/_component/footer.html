@@ -3,29 +3,29 @@
         <nav class="pull-left">
             <ul class="nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#" title="Contact">
-                        Contact
+                    <a class="nav-link" href="#" title="{{ 'component.footer.contact'|trans }}">
+                        {{ 'component.footer.contact'|trans }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" title="Help">
-                        Help
+                    <a class="nav-link" href="#" title="{{ 'component.footer.help'|trans }}">
+                        {{ 'component.footer.help'|trans }}
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" title="Licences">
-                        Licences
+                    <a class="nav-link" href="#" title="{{ 'component.footer.licences'|trans }}">
+                        {{ 'component.footer.licences'|trans }}
                     </a>
                 </li>
             </ul>
         </nav>
         <div class="copyright">
-            2024,
-            Made with
+            {{ 'now'|date('Y') }},
+            {{ 'component.footer.madeWith'|trans }}
             <i class="fa-solid fa-heart text-danger"></i>
         </div>
         <div>
-            Distributed by
+            {{ 'component.footer.distributedBy'|trans }}
             <a target="_blank" href="https://oskarwegner.pl/" title="Oskar Wegner">Oskar Wegner</a>.
         </div>
     </div>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{_component/header :: header(~{::title})}">
+    <title>Member list</title>
+</head>
+<body th:replace="~{layout :: wrapper(~{::bodyContent}, ~{::breadcrumbs}, ~{::header})}">
+    <h1 th:fragment="header">Member list</h1>
+
+    <nav aria-label="{{ 'component.breadcrumbs.label'|trans }}" th:fragment="breadcrumbs">
+        <ol class="breadcrumbs">
+            <li class="nav-item">
+                <a th:href="@{/}" title="Home">
+                    <i class="fa-solid fa-house"></i>
+                </a>
+            </li>
+            <li class="separator">
+                <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/members/list}" title="Members">
+                    <span>Members</span>
+                </a>
+            </li>
+        </ol>
+    </nav>
+
+    <div th:fragment="bodyContent" class="body">
+        <a th:href="@{/members/add}">Add member</a>
+
+        <div th:replace="~{Member/list.page :: wrapper(paginationData=${members})}" id="dynamic-knp-table" data-automplete-url="{{ href('admin_member_list_autocomplete') }}">
+        </div>
+    </div>
+</body>
+</html>

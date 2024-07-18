@@ -29,7 +29,7 @@ public class LoginAction {
     @GetMapping("/login-choice")
     public String loginChoice(Model model) {
         model.addAttribute("username", "Administrator");
-        return "login_choice";
+        return "Security/login_choice";
     }
 
     @PostMapping("/login")

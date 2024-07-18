@@ -1,1 +1,0 @@
-{% if ['/members/list'] contains currentUrlPath %}show active{% endif %}
