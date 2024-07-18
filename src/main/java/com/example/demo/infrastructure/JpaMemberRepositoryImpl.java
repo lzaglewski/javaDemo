@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 public class JpaMemberRepositoryImpl implements MemberRepositoryInterface {
@@ -43,12 +44,17 @@ public class JpaMemberRepositoryImpl implements MemberRepositoryInterface {
     }
 
     @Override
-    public Optional<Member> findById(Long id) {
+    public Optional<Member> findById(UUID id) {
         return jpaMemberRepository.findById(id);
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteById(UUID id) {
         jpaMemberRepository.deleteById(id);
+    }
+
+    @Override
+    public void save(Member member) {
+        jpaMemberRepository.save(member);
     }
 }

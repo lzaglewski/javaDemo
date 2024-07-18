@@ -6,6 +6,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface MemberRepositoryInterface {
     List<Member> findByEmail(String name);
@@ -14,7 +15,9 @@ public interface MemberRepositoryInterface {
 
     void add(Member member);
 
-    Optional<Member> findById(Long id);
+    Optional<Member> findById(UUID id);
 
-    void deleteById(Long id);
+    void deleteById(UUID id);
+
+    void save(Member member);
 }

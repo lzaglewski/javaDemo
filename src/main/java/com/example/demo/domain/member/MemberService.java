@@ -10,6 +10,7 @@ import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class MemberService {
@@ -38,11 +39,11 @@ public class MemberService {
         return memberRepositoryInterface.findAll(pageable);
     }
 
-    public Member getMember(Long id) {
+    public Member getMember(UUID id) {
         return memberRepositoryInterface.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid member Id:" + id));
     }
 
-    public void deleteMember(Long id) {
+    public void deleteMember(UUID id) {
         memberRepositoryInterface.deleteById(id);
     }
 }
