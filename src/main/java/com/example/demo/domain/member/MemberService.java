@@ -9,8 +9,6 @@ import org.springframework.integration.channel.DirectChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @Service
 public class MemberService {
     private final MemberRepositoryInterface memberRepositoryInterface;
@@ -29,7 +27,7 @@ public class MemberService {
 
         LogMessage logMessage = new LogMessage("Member created", System.currentTimeMillis());
         logChannel.send(MessageBuilder.withPayload(logMessage).build());
-        
+
         MemberCreatedEvent event = new MemberCreatedEvent(this, name, email);
         eventPublisher.publishEvent(event);
     }

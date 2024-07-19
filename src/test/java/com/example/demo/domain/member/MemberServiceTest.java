@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.integration.channel.DirectChannel;
 import org.springframework.messaging.Message;
 
@@ -21,6 +22,8 @@ public class MemberServiceTest {
     private MemberRepositoryInterface memberRepositoryInterface;
     @Mock
     private DirectChannel logChannel;
+    @Mock
+    private ApplicationEventPublisher eventPublisher;
 
     @InjectMocks
     private MemberService memberService;
@@ -37,7 +40,7 @@ public class MemberServiceTest {
 
         memberService.createMember(name, email);
 
-        verify(memberRepositoryInterface, times(1)).save(any(Member.class));
+        verify(memberRepositoryInterface, times(1)).add(any(Member.class));
         verify(logChannel, times(1)).send(any(Message.class));
     }
 }
