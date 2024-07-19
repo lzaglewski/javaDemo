@@ -30,3 +30,10 @@ services:
     build: docker/node
     volumes:
       - './:/var/app'
+  mailhog:
+    container_name: java_mailhog
+    image: registry.hub.docker.com/mailhog/mailhog
+    platform: linux/amd64
+    ports:
+      - '8025:8025'
+      - '1025:1025'

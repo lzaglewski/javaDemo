@@ -1,5 +1,6 @@
 {
     "java.compile.nullAnalysis.mode": "automatic",
     "workbench.tree.indent": 15,
-    "workbench.tree.renderIndentGuides": "onHover"
+    "workbench.tree.renderIndentGuides": "onHover",
+    "java.configuration.updateBuildConfiguration": "interactive"
 }
