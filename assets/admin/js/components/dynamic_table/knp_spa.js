@@ -1,4 +1,4 @@
-function componentsDynamicTableKnpSpa() {
+async function componentsDynamicTableKnpSpa() {
     const knpTableContainer = document.querySelector('#dynamic-knp-table');
     if (!knpTableContainer) {
         return;
@@ -11,6 +11,22 @@ function componentsDynamicTableKnpSpa() {
 
         columnNameTranslations[propertyName] = translation;
     }
+
+    // load table
+    const fade = document.querySelector('#dynamic-knp-table .tear');
+    fade.classList.remove('d-none');
+
+    const response = await fetch(knpTableContainer.getAttribute('data-automplete-url'));
+    if (!response.ok) {
+        console.error('Cannot fetch table');
+
+        return;
+    }
+
+    const data = await response.text();
+    knpTableContainer.innerHTML = data;
+    fade.classList.add('d-none');
+    spaPagination();
 
     function linkSearchInput() {
         let knpSearchInput = document.getElementById('data-table-search');
@@ -58,7 +74,7 @@ function componentsDynamicTableKnpSpa() {
     }
 
     function spaPagination() {
-        let links = document.querySelectorAll('.knp-pagination a.page-link');
+        const links = document.querySelectorAll('#dynamic-knp-table a.page-link:not([disabled])');
 
         links.forEach((link) => {
             link.addEventListener('click', (e) => {
@@ -69,7 +85,7 @@ function componentsDynamicTableKnpSpa() {
                     url.pathname += `/page`;
                 }
 
-                let fade = document.querySelector('#dynamic-knp-table .tear');
+                const fade = document.querySelector('#dynamic-knp-table .tear');
                 fade.classList.remove('d-none');
 
                 fetch(url.toString())

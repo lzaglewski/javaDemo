@@ -4,7 +4,7 @@
     <title>Member list</title>
 </head>
 <body th:replace="~{layout :: wrapper(~{::bodyContent}, ~{::breadcrumbs}, ~{::header})}">
-    <h1 th:fragment="header">Member list</h1>
+    <h1 th:fragment="header" th:text="#{home_page.h1}">Member list</h1>
 
     <nav aria-label="{{ 'component.breadcrumbs.label'|trans }}" th:fragment="breadcrumbs">
         <ol class="breadcrumbs">
@@ -27,7 +27,8 @@
     <div th:fragment="bodyContent" class="body">
         <a th:href="@{/members/add}">Add member</a>
 
-        <div th:replace="~{Member/list.page :: wrapper(paginationData=${members})}" id="dynamic-knp-table" data-automplete-url="{{ href('admin_member_list_autocomplete') }}">
+        <div id="dynamic-knp-table" th:data-automplete-url="@{/members/list/page}">
+            <div class="tear d-none"></div>
         </div>
     </div>
 </body>
