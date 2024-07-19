@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html th:lang="${#locale}" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{_component/header :: header(~{::title})}">
-    <title>Homepage</title>
+    <title>Member list</title>
 </head>
 <body th:replace="~{layout :: wrapper(~{::bodyContent}, ~{::breadcrumbs}, ~{::header})}">
-    <h1 th:fragment="header">Homepage</h1>
+    <h1 th:fragment="header">Member list</h1>
 
     <nav aria-label="{{ 'component.breadcrumbs.label'|trans }}" th:fragment="breadcrumbs">
         <ol class="breadcrumbs">
@@ -13,18 +13,25 @@
                     <i class="fa-solid fa-house"></i>
                 </a>
             </li>
+            <li class="separator">
+                <i class="fa-solid fa-chevron-right"></i>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/members/list}" title="Members">
+                    <span>Members</span>
+                </a>
+            </li>
         </ol>
     </nav>
 
     <div th:fragment="bodyContent" class="body">
+        <h2>Member Details</h2>
         <div>
-            <a th:href="@{/logout}" class="btn btn-primary">Logout</a>
-            <a th:href="@{/login-choice}" class="btn btn-primary">Login</a>
+            <p>UUID: <span th:text="${member.uuid}"></span></p>
+            <p>Name: <span th:text="${member.name}"></span></p>
+            <p>Email: <span th:text="${member.email}"></span></p>
         </div>
 
-        <p th:text="'Hello, ' + ${name} + ' my friend'">Hello, friend</p>
-        <p th:text="'Current path : ' + ${currentUrlPath}">Current URL Path</p>
-        <div th:text="${pathname}">text</div>
     </div>
 </body>
 </html>

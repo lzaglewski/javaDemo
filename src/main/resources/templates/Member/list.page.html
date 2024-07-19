@@ -11,7 +11,7 @@
             <td th:text="${member.name}">Name</td>
             <td th:text="${member.email}">email</td>
             <td>
-                <a th:href="@{/members/list(size=5)}" class="link">
+                <a th:href="@{/members/show/{uuid}(uuid=${member.uuid})}" class="link">
                     Show
                 </a>
             </td>

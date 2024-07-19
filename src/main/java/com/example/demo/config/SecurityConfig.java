@@ -43,10 +43,14 @@ public class SecurityConfig {
                         .requestMatchers("/whoami").permitAll()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
                         .requestMatchers("/members/**").access(this.listMemberActionVoter)
-                        .anyRequest().authenticated())
+                        .anyRequest().authenticated()
+                )
                 .logout(logout -> logout
                         .logoutUrl("/logout")
-                        .deleteCookies("JSESSIONID"));
+                        .deleteCookies("JSESSIONID"))
+                .formLogin(form -> form
+                        .loginPage("/login-choice")
+                        .permitAll());
         return http.build();
     }
 
@@ -83,10 +87,10 @@ public class SecurityConfig {
     @Bean
     static RoleHierarchy roleHierarchy() {
         return RoleHierarchyImpl.withDefaultRolePrefix()
-            .role("ADMIN").implies("STAFF")
-            .role("STAFF").implies("USER")
-            .role("USER").implies("GUEST")
-            .build();
+                .role("ADMIN").implies("STAFF")
+                .role("STAFF").implies("USER")
+                .role("USER").implies("GUEST")
+                .build();
     }
 
     @Bean

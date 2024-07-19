@@ -1,21 +1,28 @@
 package com.example.demo.domain.member;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-import java.util.UUID;
+
+import com.fasterxml.uuid.Generators;
 
 @Entity
 @Table(name = "member")
 public class Member {
     @Id
-    private UUID uuid;
+    @Column(length = 36)
+    private String uuid;
     private String name;
     private String email;
 
+    public Member(String uuid) {
+        this.uuid = uuid;
+    }
+
     public Member(String name, String email) {
-        this.uuid = UUID.randomUUID();
+        this.uuid = Generators.defaultTimeBasedGenerator().generate().toString();
         this.name = name;
         this.email = email;
     }
@@ -24,11 +31,11 @@ public class Member {
 
     }
 
-    public void setId(UUID uuid) {
+    public void setUuid(String uuid) {
         this.uuid = uuid;
     }
 
-    public UUID getId() {
+    public String getUuid() {
         return uuid;
     }
 

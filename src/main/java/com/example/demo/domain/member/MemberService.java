@@ -38,11 +38,11 @@ public class MemberService {
         return memberRepositoryInterface.findAll(pageable);
     }
 
-    public Member getMember(UUID id) {
-        return memberRepositoryInterface.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid member Id:" + id));
+    public Member getMember(String id) {
+        return memberRepositoryInterface.findByUUID(id).orElseThrow(() -> new IllegalArgumentException("Invalid member Id:" + id));
     }
 
-    public void deleteMember(UUID id) {
+    public void deleteMember(String id) {
         memberRepositoryInterface.deleteById(id);
     }
 }

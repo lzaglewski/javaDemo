@@ -15,9 +15,9 @@ public interface MemberRepositoryInterface {
 
     void add(Member member);
 
-    Optional<Member> findById(UUID id);
+    Optional<Member> findByUUID(String id);
 
-    void deleteById(UUID id);
+    void deleteById(String id);
 
     void save(Member member);
 }
