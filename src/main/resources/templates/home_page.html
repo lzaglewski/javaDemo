@@ -18,12 +18,12 @@
 
     <div th:fragment="bodyContent" class="body">
         <div>
-            <a th:href="@{/logout}">Logout</a>
-            <a th:href="@{/login-choice}">Login</a>
+            <a th:href="@{/logout}" class="btn btn-primary">Logout</a>
+            <a th:href="@{/login-choice}" class="btn btn-primary">Login</a>
         </div>
 
         <p th:text="'Hello, ' + ${name} + ' my friend'">Hello, friend</p>
-        <p th:text="${currentUrlPath}">Current URL Path</p>
+        <p th:text="'Current path : ' + ${currentUrlPath}">Current URL Path</p>
         <div th:text="${pathname}">text</div>
     </div>
 </body>
