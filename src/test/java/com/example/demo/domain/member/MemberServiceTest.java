@@ -32,26 +32,12 @@ public class MemberServiceTest {
 
     @Test
     void createMember() {
-        // String name = "Test Name";
-        // String email = "test@example.com";
-
-        // memberService.createMember(name, email);
-
-        // verify(memberRepositoryInterface, times(1)).save(any(Member.class));
-        // verify(logChannel, times(1)).send(any(Message.class));
-    }
-
-    @Test
-    void getMembersByEmail() {
+        String name = "Test Name";
         String email = "test@example.com";
-        Member member = new Member("Test Name", email);
 
-        when(memberRepositoryInterface.findByEmail(email)).thenReturn(Collections.singletonList(member));
+        memberService.createMember(name, email);
 
-        // List<Member> members = memberService.getMembersByEmail(email);
-
-        // assertEquals(1, members.size());
-        // assertEquals(email, members.getFirst().getEmail());
-        // verify(memberRepositoryInterface, times(1)).findByEmail(email);
+        verify(memberRepositoryInterface, times(1)).save(any(Member.class));
+        verify(logChannel, times(1)).send(any(Message.class));
     }
 }

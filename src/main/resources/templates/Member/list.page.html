@@ -1,13 +1,13 @@
-<div th:fragment="wrapper(paginationData)">
+<div>
     <div class="tear d-none"></div>
     <table class="table table-bordered">
-        <tr>
+        <tr class="header-row">
             <th>Name</th>
             <th>Email</th>
             <th>Options</th>
         </tr>
 
-        <tr th:each="member : ${members.content}">
+        <tr th:each="member : ${pagination.content}">
             <td th:text="${member.name}">Name</td>
             <td th:text="${member.email}">email</td>
             <td>
@@ -17,4 +17,63 @@
             </td>
         </tr>
     </table>
+
+    <nav id="pagination-nav" aria-label="Page navigation example" th:data-total="${pagination.totalElements}" th:data-page-number="${pagination.number}">
+        <ul class="pagination">
+            <li class="page-item">
+                <a
+                    th:if="${pagination.number > 0}"
+                    class="page-link"
+                    th:href="@{/members/list/page(page=${pagination.number})}" 
+                    aria-label="Previous"
+                >
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+                <a
+                    th:if="${pagination.number < 1}"
+                    class="page-link"
+                    aria-label="Previous"
+                    disabled="disabled"
+                >
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+
+            <li
+                th:if="${pagination.totalPages > 0}"
+                class="page-item"
+                th:each="pageNumber : ${pageNumbers}"
+            >
+                <a
+                    class="page-link"
+                    th:href="@{/members/list/page(page=${pageNumber})}"
+                    th:text="${pageNumber}"
+                ></a>
+            </li>
+
+            <li class="page-item">
+                <a
+                    th:if="${pagination.number < pagination.totalPages - 1}"
+                    class="page-link"
+                    th:href="@{/members/list/page(page=${pagination.number + 2})}"
+                    aria-label="Next"
+                >
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+                <a
+                    th:if="${pagination.number >= pagination.totalPages - 1}"
+                    class="page-link"
+                    aria-label="Next"
+                    disabled="disabled"
+                >
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+        <select class="form-select" aria-label="Default select example">
+            <option value="3" th:selected="${pagination.size == 3}">One</option>
+            <option value="5" th:selected="${pagination.size == 5}">Two</option>
+            <option value="10" th:selected="${pagination.size == 10}">Three</option>
+        </select>
+    </nav>
 </div>

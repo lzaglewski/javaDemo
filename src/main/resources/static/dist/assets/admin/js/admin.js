@@ -14,7 +14,7 @@
   // assets/admin/js/components/dynamic_table/knp_spa.js
   var require_knp_spa = __commonJS({
     "assets/admin/js/components/dynamic_table/knp_spa.js"() {
-      function componentsDynamicTableKnpSpa() {
+      async function componentsDynamicTableKnpSpa() {
         const knpTableContainer = document.querySelector("#dynamic-knp-table");
         if (!knpTableContainer) {
           return;
@@ -25,6 +25,17 @@
           const translation = elem.title;
           columnNameTranslations[propertyName] = translation;
         }
+        const fade = document.querySelector("#dynamic-knp-table .tear");
+        fade.classList.remove("d-none");
+        const response = await fetch(knpTableContainer.getAttribute("data-automplete-url"));
+        if (!response.ok) {
+          console.error("Cannot fetch table");
+          return;
+        }
+        const data = await response.text();
+        knpTableContainer.innerHTML = data;
+        fade.classList.add("d-none");
+        spaPagination();
         function linkSearchInput() {
           let knpSearchInput = document.getElementById("data-table-search");
           if (!knpSearchInput) {
@@ -61,7 +72,7 @@
           });
         }
         function spaPagination() {
-          let links = document.querySelectorAll(".knp-pagination a.page-link");
+          const links = document.querySelectorAll("#dynamic-knp-table a.page-link:not([disabled])");
           links.forEach((link) => {
             link.addEventListener("click", (e) => {
               e.preventDefault();
@@ -69,11 +80,11 @@
               if (!url.pathname.endsWith("/page")) {
                 url.pathname += `/page`;
               }
-              let fade = document.querySelector("#dynamic-knp-table .tear");
-              fade.classList.remove("d-none");
-              fetch(url.toString()).then((data) => data.text()).then((data) => {
-                fade.classList.add("d-none");
-                knpTableContainer.innerHTML = data;
+              const fade2 = document.querySelector("#dynamic-knp-table .tear");
+              fade2.classList.remove("d-none");
+              fetch(url.toString()).then((data2) => data2.text()).then((data2) => {
+                fade2.classList.add("d-none");
+                knpTableContainer.innerHTML = data2;
                 spaPagination();
               });
               window.history.pushState(null, "", link.getAttribute("href").replace("/page", ""));
@@ -135,17 +146,17 @@
           autoCompleteSearchParams.set("search", inputValue);
           autoCompleteBaseUrl.search = autoCompleteSearchParams.toString();
           const urlToSearch = autoCompleteBaseUrl.toString();
-          const response = await fetch(urlToSearch, {
+          const response2 = await fetch(urlToSearch, {
             method: "GET",
             headers: {
               "Content-Type": "application/json"
             }
           });
-          const data = await response.json();
-          resultsContainer.querySelector("#current-results-count").textContent = data.items.length;
-          resultsContainer.querySelector("#total-results-count").textContent = data.totalCount;
+          const data2 = await response2.json();
+          resultsContainer.querySelector("#current-results-count").textContent = data2.items.length;
+          resultsContainer.querySelector("#total-results-count").textContent = data2.totalCount;
           results.innerHTML = "";
-          for (const item of data.items) {
+          for (const item of data2.items) {
             const value = item.value;
             const selectedFrom = value.toLowerCase().indexOf(inputValue.toLowerCase());
             const selectedTo = inputValue.length + selectedFrom;
