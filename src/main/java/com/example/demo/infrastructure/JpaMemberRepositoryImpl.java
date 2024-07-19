@@ -42,13 +42,13 @@ public class JpaMemberRepositoryImpl implements MemberRepositoryInterface {
     }
 
     @Override
-    public Optional<Member> findById(UUID id) {
+    public Optional<Member> findByUUID(String id) {
         return jpaMemberRepository.findById(id);
     }
 
     @Override
-    public void deleteById(UUID id) {
-        jpaMemberRepository.deleteById(id);
+    public void deleteById(String id) {
+        jpaMemberRepository.deleteById(String.valueOf(id));
     }
 
     @Override

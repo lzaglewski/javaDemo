@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 
 java {
 	toolchain {
-		languageVersion = JavaLanguageVersion.of(22)
+		languageVersion = JavaLanguageVersion.of(21)
 	}
 }
 
@@ -37,6 +37,7 @@ dependencies {
 //	implementation 'org.flywaydb:flyway-database-oracle'
 	implementation 'org.liquibase:liquibase-core'
 	implementation 'org.springframework.shell:spring-shell-starter:3.3.1'
+	implementation 'com.fasterxml.uuid:java-uuid-generator:5.1.0'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 //	developmentOnly 'org.springframework.boot:spring-boot-docker-compose'
 	runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
