@@ -18,7 +18,6 @@ public class DashboardAction {
     @GetMapping()
     public String home(Model model) {
 
-
         SecurityContext context = SecurityContextHolder.getContext();
         Authentication authentication = context.getAuthentication();
         if (authentication != null) {
